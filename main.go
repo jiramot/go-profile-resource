@@ -11,6 +11,7 @@ import (
 func main() {
 	e := echo.New()
 	e.Use(middleware.Logger())
+	e.Use(middleware.CORS())
 	e.Use(auth.Auth)
 	e.GET("/", func(c echo.Context) error {
 		principle := c.Get("UserPrinciple").(*auth.UserPrinciple)
